@@ -1,4 +1,5 @@
-﻿using GestioneAule.Models;
+﻿using System.Text.Json;
+using GestioneAule.Models;
 
 namespace GestioneAule.Services
 {
@@ -7,9 +8,18 @@ namespace GestioneAule.Services
         private List<Aula> aule = new List<Aula>();
         private List<Prenotazione> prenotazioni = new List<Prenotazione>();
 
+        private const string FileAule = "aule.json";
+        private const string FilePrenotazioni = "prenotazioni.json";
+
+        public GestoreAule()
+        {
+            CaricaDati();
+        }
+
         public void AggiungiAula(Aula aula)
         {
             aule.Add(aula);
+            SalvaDati();
         }
 
         public void MostraAule()
@@ -59,6 +69,7 @@ namespace GestioneAule.Services
                 return false;
 
             prenotazioni.Add(prenotazione);
+            SalvaDati();
             return true;
         }
 
@@ -76,7 +87,7 @@ namespace GestioneAule.Services
             }
         }
 
-        public Prenotazione OttieniUltimaPrenotazione()
+        public Prenotazione? OttieniUltimaPrenotazione()
         {
             if (prenotazioni.Count == 0)
                 return null;
@@ -84,7 +95,7 @@ namespace GestioneAule.Services
             return prenotazioni[prenotazioni.Count - 1];
         }
 
-        public Prenotazione CercaPrenotazionePerId(int id)
+        public Prenotazione? CercaPrenotazionePerId(int id)
         {
             return prenotazioni.FirstOrDefault(p => p.Id == id);
         }
@@ -101,6 +112,53 @@ namespace GestioneAule.Services
             return prenotazioni
                 .Where(p => p.Materia.ToLower().Contains(materia.ToLower()))
                 .ToList();
+        }
+
+        private void SalvaDati()
+        {
+            var opzioni = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
+
+            string jsonAule = JsonSerializer.Serialize(aule, opzioni);
+            File.WriteAllText(FileAule, jsonAule);
+
+            string jsonPrenotazioni = JsonSerializer.Serialize(prenotazioni, opzioni);
+            File.WriteAllText(FilePrenotazioni, jsonPrenotazioni);
+        }
+
+        private void CaricaDati()
+        {
+            if (File.Exists(FileAule))
+            {
+                string jsonAule = File.ReadAllText(FileAule);
+                List<Aula>? auleCaricate = JsonSerializer.Deserialize<List<Aula>>(jsonAule);
+
+                if (auleCaricate != null)
+                    aule = auleCaricate;
+            }
+
+            if (File.Exists(FilePrenotazioni))
+            {
+                string jsonPrenotazioni = File.ReadAllText(FilePrenotazioni);
+                List<Prenotazione>? prenotazioniCaricate = JsonSerializer.Deserialize<List<Prenotazione>>(jsonPrenotazioni);
+
+                if (prenotazioniCaricate != null)
+                    prenotazioni = prenotazioniCaricate;
+            }
+        }
+
+        public bool AnnullaPrenotazione(int idPrenotazione)
+        {
+            Prenotazione? prenotazioneDaRimuovere = prenotazioni.FirstOrDefault(p => p.Id == idPrenotazione);
+
+            if (prenotazioneDaRimuovere == null)
+                return false;
+
+            prenotazioni.Remove(prenotazioneDaRimuovere);
+            SalvaDati();
+            return true;
         }
     }
 }

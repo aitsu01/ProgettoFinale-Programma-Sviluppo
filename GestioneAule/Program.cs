@@ -24,6 +24,7 @@ do
     Console.WriteLine("3. Prenota aula");
     Console.WriteLine("4. Mostra prenotazioni");
     Console.WriteLine("5. Ricerca prenotazione");
+    Console.WriteLine("6. Annulla prenotazione");
     Console.WriteLine("0. Esci");
     Console.Write("Scelta: ");
 
@@ -42,13 +43,15 @@ do
             Console.Write("Nome aula: ");
             string nomeAula = Console.ReadLine();
 
+            Console.Write("Materia dell'aula: ");
+            string materiaAula = Console.ReadLine();
+
             Console.Write("Capienza: ");
             int capienza = int.Parse(Console.ReadLine());
 
-            gestore.AggiungiAula(new Aula(idAula, nomeAula, capienza));
+            gestore.AggiungiAula(new Aula(idAula, nomeAula, materiaAula, capienza));
             Console.WriteLine("Aula aggiunta con successo.");
             break;
-
         case 2:
             Console.WriteLine("\n--- ELENCO AULE ---");
             gestore.MostraAule();
@@ -157,6 +160,16 @@ do
                     Console.WriteLine("Scelta non valida.");
                     break;
             }
+            break;
+
+        case 6:
+            Console.Write("Inserisci l'ID della prenotazione da annullare: ");
+            int idDaAnnullare = int.Parse(Console.ReadLine());
+
+            if (gestore.AnnullaPrenotazione(idDaAnnullare))
+                Console.WriteLine("Prenotazione annullata con successo.");
+            else
+                Console.WriteLine("Prenotazione non trovata.");
             break;
 
         case 0:

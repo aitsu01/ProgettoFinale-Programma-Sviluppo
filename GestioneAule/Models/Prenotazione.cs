@@ -10,6 +10,10 @@
         public int OraInizio { get; set; }
         public int OraFine { get; set; }
 
+        public Prenotazione()
+        {
+        }
+
         public Prenotazione(int id, string nomeStudente, string materia, int aulaId, DateTime data, int oraInizio, int oraFine)
         {
             Id = id;
