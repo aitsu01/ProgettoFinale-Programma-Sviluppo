@@ -7,10 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Nuova cartella\**" />
-    <EmbeddedResource Remove="Nuova cartella\**" />
-    <None Remove="Nuova cartella\**" />
-  </ItemGroup>
-
 </Project>
