@@ -1,35 +1,53 @@
-# Gestione Aule Studio
+<h1 align="center">Gestione Aule Studio</h1>
 
-## Descrizione del progetto
-Questo progetto è un'applicazione console sviluppata in **C#** che permette agli studenti universitari di **prenotare un’aula studio** indicando il **giorno** e la **fascia oraria** desiderata.
+<p align="center">
+  Applicazione console sviluppata in <b>C#</b> per la prenotazione di aule studio universitarie,
+  con controllo automatico delle sovrapposizioni di orario.
+</p>
 
-Il sistema controlla automaticamente che **non ci siano sovrapposizioni di prenotazione** nella stessa aula, nello stesso giorno e nella stessa fascia oraria.
+<hr>
 
-## Obiettivo
-L'obiettivo del progetto è simulare un semplice sistema di gestione delle aule studio universitarie, applicando i principi base della **programmazione orientata agli oggetti**.
+<h2>Descrizione del progetto</h2>
 
-## Ambiente di sviluppo
-Il progetto è stato sviluppato usando:
+<p>
+  Questo progetto è un'applicazione console sviluppata in <b>C#</b> che permette agli studenti universitari
+  di <b>prenotare un’aula studio</b> indicando il <b>giorno</b> e la <b>fascia oraria</b> desiderata.
+</p>
 
-- **Visual Studio Community 2022**
-- **C#**
-- **.NET**
-- Applicazione **Console**
+<p>
+  Il sistema controlla automaticamente che <b>non ci siano sovrapposizioni di prenotazione</b>
+  nella stessa aula, nello stesso giorno e nella stessa fascia oraria.
+</p>
 
-## Funzionalità principali
-Il programma permette di:
+<h2>Obiettivo</h2>
 
-- aggiungere un’aula
-- visualizzare l’elenco delle aule
-- prenotare un’aula studio
-- visualizzare tutte le prenotazioni
-- evitare sovrapposizioni di orario nella stessa aula
+<p>
+  L'obiettivo del progetto è simulare un semplice sistema di gestione delle aule studio universitarie,
+  applicando i principi base della <b>programmazione orientata agli oggetti</b>.
+</p>
 
-## Struttura del progetto
-Il progetto è organizzato in modo semplice e chiaro:
+<h2>Ambiente di sviluppo</h2>
 
-```text
-GestioneAule/
+<ul>
+  <li><b>Visual Studio Community 2022</b></li>
+  <li><b>C#</b></li>
+  <li><b>.NET</b></li>
+  <li>Applicazione <b>Console</b></li>
+</ul>
+
+<h2>Funzionalità principali</h2>
+
+<ul>
+  <li>Aggiungere un’aula</li>
+  <li>Visualizzare l’elenco delle aule</li>
+  <li>Prenotare un’aula studio</li>
+  <li>Visualizzare tutte le prenotazioni</li>
+  <li>Evitare sovrapposizioni di orario nella stessa aula</li>
+</ul>
+
+<h2>Struttura del progetto</h2>
+
+<pre><code>GestioneAule/
 ├── Program.cs
 ├── Models/
 │   ├── Aula.cs
@@ -39,172 +57,229 @@ GestioneAule/
 ├── GestioneAule.csproj
 ├── GestioneAule.sln
 └── README.md
+</code></pre>
 
+<h2>Classi principali</h2>
 
-Classi principali
-Aula
+<h3>Aula</h3>
+<p>Rappresenta un’aula studio disponibile per la prenotazione.</p>
 
-Rappresenta un’aula studio disponibile per la prenotazione.
+<p><b>Attributi principali:</b></p>
+<ul>
+  <li><code>Id</code></li>
+  <li><code>Nome</code></li>
+  <li><code>Capienza</code></li>
+</ul>
 
-Attributi principali:
+<h3>Prenotazione</h3>
+<p>Rappresenta una prenotazione effettuata da uno studente.</p>
 
-Id
-Nome
-Capienza
-Prenotazione
+<p><b>Attributi principali:</b></p>
+<ul>
+  <li><code>Id</code></li>
+  <li><code>NomeStudente</code></li>
+  <li><code>AulaId</code></li>
+  <li><code>Data</code></li>
+  <li><code>OraInizio</code></li>
+  <li><code>OraFine</code></li>
+</ul>
 
-Rappresenta una prenotazione effettuata da uno studente.
+<h3>GestoreAule</h3>
+<p>Gestisce la logica del programma, in particolare:</p>
 
-Attributi principali:
+<ul>
+  <li>Aggiunta delle aule</li>
+  <li>Visualizzazione delle aule</li>
+  <li>Inserimento delle prenotazioni</li>
+  <li>Controllo della disponibilità</li>
+  <li>Verifica delle sovrapposizioni</li>
+  <li>Visualizzazione delle prenotazioni</li>
+</ul>
 
-Id
-NomeStudente
-AulaId
-Data
-OraInizio
-OraFine
-GestoreAule
+<h2>Logica di funzionamento</h2>
 
-Gestisce la logica del programma, in particolare:
+<p>Quando uno studente prova a prenotare un’aula, il sistema verifica che:</p>
 
-aggiunta delle aule
-visualizzazione delle aule
-inserimento delle prenotazioni
-controllo della disponibilità
-verifica delle sovrapposizioni
-visualizzazione delle prenotazioni
-Logica di funzionamento
+<ol>
+  <li>L’aula esista</li>
+  <li>L’orario inserito sia valido</li>
+  <li>Non esista già una prenotazione nella stessa aula, nello stesso giorno, con fascia oraria sovrapposta</li>
+</ol>
 
-Quando uno studente prova a prenotare un’aula, il sistema verifica che:
+<p>
+  Se una prenotazione entra in conflitto con un’altra già presente, il sistema la rifiuta.
+</p>
 
-l’aula esista
-l’orario inserito sia valido
-non esista già una prenotazione nella stessa aula, nello stesso giorno, con fascia oraria sovrapposta
+<h2>Concetti di programmazione utilizzati</h2>
 
-Se una prenotazione entra in conflitto con un’altra già presente, il sistema la rifiuta.
+<ul>
+  <li>Classi e oggetti</li>
+  <li>Incapsulamento</li>
+  <li>Separazione tra modello e logica</li>
+  <li>Uso di liste di oggetti</li>
+  <li>Organizzazione del codice in cartelle (<code>Models</code> e <code>Services</code>)</li>
+</ul>
 
-Concetti di programmazione utilizzati
+<h2>Requisiti per l’installazione</h2>
 
-Nel progetto sono stati applicati alcuni concetti fondamentali della programmazione orientata agli oggetti:
+<ul>
+  <li>Windows</li>
+  <li><b>Visual Studio Community 2022</b></li>
+  <li>Supporto per lo sviluppo <b>.NET desktop</b> oppure <b>.NET</b></li>
+  <li>SDK .NET installato correttamente</li>
+</ul>
 
-classi e oggetti
-incapsulamento
-separazione tra modello e logica
-uso di liste di oggetti
-organizzazione del codice in cartelle (Models e Services)
-Requisiti per l'installazione
+<h2>Installazione del progetto</h2>
 
-Per eseguire il progetto è consigliato avere:
+<h3>Metodo 1: clonare da GitHub</h3>
 
-Windows
-Visual Studio Community 2022
-supporto per lo sviluppo .NET desktop oppure .NET
-SDK .NET installato correttamente
-Installazione del progetto
-Metodo 1: clonare da GitHub
+<p>Aprire il terminale o Git Bash e scrivere:</p>
 
-Aprire il terminale o Git Bash e scrivere:
+<pre><code>git clone URL_DEL_TUO_REPOSITORY
+</code></pre>
 
-git clone URL_DEL_TUO_REPOSITORY
+<p>Poi entrare nella cartella del progetto:</p>
 
-Poi entrare nella cartella del progetto:
+<pre><code>cd GestioneAule
+</code></pre>
 
-cd GestioneAule
+<p>
+  Dopo il clone, puoi aprire il progetto in <b>Visual Studio Community 2022</b>
+  facendo doppio clic sul file:
+</p>
 
-Dopo il clone, puoi aprire il progetto in Visual Studio Community 2022 facendo doppio clic sul file:
+<pre><code>GestioneAule.sln
+</code></pre>
 
-GestioneAule.sln
-Metodo 2: download ZIP
+<h3>Metodo 2: download ZIP</h3>
 
-In alternativa:
+<ol>
+  <li>Aprire il repository su GitHub</li>
+  <li>Cliccare su <b>Code</b></li>
+  <li>Cliccare su <b>Download ZIP</b></li>
+  <li>Estrarre la cartella</li>
+  <li>Aprire <code>GestioneAule.sln</code> con Visual Studio Community 2022</li>
+</ol>
 
-aprire il repository su GitHub
-cliccare su Code
-cliccare su Download ZIP
-estrarre la cartella
-aprire GestioneAule.sln con Visual Studio Community 2022
-Guida al clone del repository
+<h2>Guida al clone del repository</h2>
 
-Per scaricare il progetto dal repository remoto:
+<ol>
+  <li>Copiare il link del repository da GitHub</li>
+  <li>Aprire Git Bash oppure il terminale</li>
+  <li>Eseguire il comando:</li>
+</ol>
 
-copiare il link del repository da GitHub
-aprire Git Bash oppure il terminale
-eseguire il comando:
-git clone URL_DEL_TUO_REPOSITORY
-entrare nella cartella del progetto:
-cd GestioneAule
-aprire il file .sln con Visual Studio Community 2022
-Come avviare il progetto in Visual Studio Community 2022
-aprire Visual Studio Community 2022
-selezionare Apri un progetto o una soluzione
-scegliere il file GestioneAule.sln
-attendere il caricamento del progetto
-premere F5 oppure il pulsante Avvia
+<pre><code>git clone URL_DEL_TUO_REPOSITORY
+</code></pre>
 
-Il programma verrà eseguito nella console.
+<ol start="4">
+  <li>Entrare nella cartella del progetto:</li>
+</ol>
 
-Come avviare il progetto da terminale
+<pre><code>cd GestioneAule
+</code></pre>
 
-Se vuoi eseguirlo da terminale, posizionati nella cartella del progetto e usa:
+<ol start="5">
+  <li>Aprire il file <code>.sln</code> con Visual Studio Community 2022</li>
+</ol>
 
-bash:
-dotnet run
+<h2>Come avviare il progetto in Visual Studio Community 2022</h2>
 
+<ol>
+  <li>Aprire <b>Visual Studio Community 2022</b></li>
+  <li>Selezionare <b>Apri un progetto o una soluzione</b></li>
+  <li>Scegliere il file <code>GestioneAule.sln</code></li>
+  <li>Attendere il caricamento del progetto</li>
+  <li>Premere <b>F5</b> oppure il pulsante <b>Avvia</b></li>
+</ol>
 
-Menu del programma
+<p>Il programma verrà eseguito nella console.</p>
 
-Il menu principale offre le seguenti opzioni:
+<h2>Come avviare il progetto da terminale</h2>
 
-1 Aggiungi aula
-2 Mostra aule
-3 Prenota aula
-4 Mostra prenotazioni
-0 Esci
-Esempio di utilizzo
+<p>Se vuoi eseguirlo da terminale, posizionati nella cartella del progetto e usa:</p>
 
-Esempio di flusso del programma:
+<pre><code>dotnet run
+</code></pre>
 
-inserimento di un’aula
-visualizzazione delle aule disponibili
-inserimento di una prenotazione con:
-nome studente
-id aula
-data
-ora inizio
-ora fine
-controllo automatico della disponibilità
-visualizzazione delle prenotazioni registrate
-Esempio di caso valido
-Aula ID: 1
-Data: 2026-04-10
-Ora inizio: 9
-Ora fine: 11
+<h2>Menu del programma</h2>
 
-La prenotazione viene accettata se l’aula è libera.
+<ul>
+  <li><code>1</code> - Aggiungi aula</li>
+  <li><code>2</code> - Mostra aule</li>
+  <li><code>3</code> - Prenota aula</li>
+  <li><code>4</code> - Mostra prenotazioni</li>
+  <li><code>0</code> - Esci</li>
+</ul>
 
-Esempio di sovrapposizione
+<h2>Esempio di utilizzo</h2>
 
-Se esiste già una prenotazione per l’aula 1 il giorno 2026-04-10 dalle 9 alle 11, una nuova prenotazione dalle 10 alle 12 viene rifiutata perché si sovrappone.
+<p>Esempio di flusso del programma:</p>
 
-File da non caricare su GitHub
+<ol>
+  <li>Inserimento di un’aula</li>
+  <li>Visualizzazione delle aule disponibili</li>
+  <li>Inserimento di una prenotazione con:
+    <ul>
+      <li>Nome studente</li>
+      <li>ID aula</li>
+      <li>Data</li>
+      <li>Ora inizio</li>
+      <li>Ora fine</li>
+    </ul>
+  </li>
+  <li>Controllo automatico della disponibilità</li>
+  <li>Visualizzazione delle prenotazioni registrate</li>
+</ol>
 
-Nel progetto è presente un file .gitignore per evitare di caricare file temporanei o generati automaticamente, come:
+<h2>Esempio di caso valido</h2>
 
-.vs/
-bin/
-obj/
-Possibili miglioramenti futuri
+<ul>
+  <li><b>Aula ID:</b> <code>1</code></li>
+  <li><b>Data:</b> <code>2026-04-10</code></li>
+  <li><b>Ora inizio:</b> <code>9</code></li>
+  <li><b>Ora fine:</b> <code>11</code></li>
+</ul>
 
-Il progetto può essere esteso con funzionalità aggiuntive, ad esempio:
+<p>La prenotazione viene accettata se l’aula è libera.</p>
 
-controllo più avanzato degli input
-eliminazione di una prenotazione
-ricerca delle aule disponibili per data e orario
-salvataggio dei dati su file
-gestione di più studenti con matricola
-Autori
+<h2>Esempio di sovrapposizione</h2>
 
-Progetto realizzato per scopo didattico nell’ambito dello studio di C# e della programmazione orientata agli oggetti.
+<p>
+  Se esiste già una prenotazione per l’aula <code>1</code> il giorno <code>2026-04-10</code>
+  dalle <code>9</code> alle <code>11</code>, una nuova prenotazione dalle <code>10</code> alle <code>12</code>
+  viene rifiutata perché si sovrappone.
+</p>
+
+<h2>File da non caricare su GitHub</h2>
+
+<p>
+  Nel progetto è presente un file <code>.gitignore</code> per evitare di caricare file temporanei
+  o generati automaticamente, come:
+</p>
+
+<ul>
+  <li><code>.vs/</code></li>
+  <li><code>bin/</code></li>
+  <li><code>obj/</code></li>
+</ul>
+
+<h2>Possibili miglioramenti futuri</h2>
+
+<ul>
+  <li>Controllo più avanzato degli input</li>
+  <li>Eliminazione di una prenotazione</li>
+  <li>Ricerca delle aule disponibili per data e orario</li>
+  <li>Salvataggio dei dati su file</li>
+  <li>Gestione di più studenti con matricola</li>
+</ul>
+
+<h2>Autori</h2>
+
+<p>
+  Progetto realizzato per scopo didattico nell’ambito dello studio di <b>C#</b>
+  e della <b>programmazione orientata agli oggetti</b>.
+</p>
 
 
 
