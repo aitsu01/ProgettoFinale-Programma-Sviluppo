@@ -75,5 +75,32 @@ namespace GestioneAule.Services
                 Console.WriteLine(prenotazione);
             }
         }
+
+        public Prenotazione OttieniUltimaPrenotazione()
+        {
+            if (prenotazioni.Count == 0)
+                return null;
+
+            return prenotazioni[prenotazioni.Count - 1];
+        }
+
+        public Prenotazione CercaPrenotazionePerId(int id)
+        {
+            return prenotazioni.FirstOrDefault(p => p.Id == id);
+        }
+
+        public List<Prenotazione> CercaPrenotazioniPerStudente(string nomeStudente)
+        {
+            return prenotazioni
+                .Where(p => p.NomeStudente.ToLower().Contains(nomeStudente.ToLower()))
+                .ToList();
+        }
+
+        public List<Prenotazione> CercaPrenotazioniPerMateria(string materia)
+        {
+            return prenotazioni
+                .Where(p => p.Materia.ToLower().Contains(materia.ToLower()))
+                .ToList();
+        }
     }
 }
