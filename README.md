@@ -135,7 +135,7 @@
 
 <p>Aprire il terminale o Git Bash e scrivere:</p>
 
-<pre><code>git clone URL_DEL_TUO_REPOSITORY
+<pre><code>git clone https://github.com/aitsu01/ProgettoFinale-Programma-Sviluppo
 </code></pre>
 
 <p>Poi entrare nella cartella del progetto:</p>
