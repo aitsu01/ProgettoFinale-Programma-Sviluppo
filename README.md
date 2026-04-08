@@ -169,7 +169,7 @@
   <li>Eseguire il comando:</li>
 </ol>
 
-<pre><code>git clone URL_DEL_TUO_REPOSITORY
+<pre><code>git clone https://github.com/aitsu01/ProgettoFinale-Programma-Sviluppo.git
 </code></pre>
 
 <ol start="4">
